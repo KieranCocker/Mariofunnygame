@@ -1,0 +1,2 @@
+﻿  Game.cpp
+C:\Users\C00259317\Desktop\Mariofunnygame\funnymariogame\Mariofunnygame\mariofunnygame\mariofunnygame\Game.cpp(201): error C4700: uninitialized local variable 'm_marioLocation' used
