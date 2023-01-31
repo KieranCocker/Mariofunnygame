@@ -77,6 +77,10 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		if (sf::Event::KeyReleased == newEvent.type) // Code to check if key is released
+		{
+			processKeyReleases(newEvent);
+		}
 	}
 }
 
@@ -143,18 +147,28 @@ void Game::setupFontAndText()
 
 void Game::changeCharacterName()
 {
-	if (m_imAMario)
+	if (m_canChange)
 	{
-		m_CharacterName.setString("Luigi");
+		if (m_imAMario)
+		{
+			m_CharacterName.setString("Luigi");
+		}
+		else
+		{
+			m_CharacterName.setString("Mario");
+		}
+		m_imAMario = !m_imAMario;
+		m_canChange = false;
 	}
-	else
-	{
-		m_CharacterName.setString("Mario");
-	}
-	m_imAMario = !m_imAMario;
+	
 
 	
 }
+void Game::processKeyReleases(sf::Event t_event)
+{
+	m_canChange = true;
+}
+
 /// <summary>
 /// load the texture and setup the sprite for the logo
 /// </summary>

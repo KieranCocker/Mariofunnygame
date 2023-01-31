@@ -32,6 +32,7 @@ private:
 	void setupSprite();
 	void centreText();
 	void changeCharacterName();
+	void processKeyReleases(sf::Event t_event);
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_SuperMario256; // font used by message
@@ -42,6 +43,7 @@ private:
 	sf::Sprite m_marioSprite; // sprite used for mario and luigi
 	bool m_exitGame; // control exiting game
 	bool m_imAMario{ true }; // Change from mario to luigi
+	bool m_canChange{ true }; // Can change name
 
 };
 
