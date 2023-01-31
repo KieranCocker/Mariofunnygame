@@ -111,6 +111,13 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	getDirection();
+	if (checkBounds())
+	{
+		move();
+	}
+	move();
+
 }
 
 /// <summary>
@@ -119,10 +126,57 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	m_window.draw(m_CharacterName);
 	m_window.draw(m_logoSprite);
 	m_window.draw(m_marioSprite);
+	m_window.draw(m_CharacterName);
 	m_window.display();
+}
+
+void Game::move()
+{
+	sf::Vector2f move{ 0.0f,0.0f };
+	switch (m_facing)
+	{
+	case Direction::None:
+		break;
+	case Direction::Up:
+		move.y = -m_speed;
+		break;
+	case Direction::Down:
+		move.y = m_speed;
+		break;
+	case Direction::Left:
+		move.x = -m_speed;
+		break;
+	case Direction::Right:
+		move.x = m_speed;
+		break;
+	default:
+		break;
+	}
+	m_position += move;
+	m_marioSprite.setPosition(m_position);
+}
+
+void Game::getDirection()
+{
+	m_facing = Direction::None;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		m_facing = Direction::Up;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		m_facing = Direction::Down;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		m_facing = Direction::Left;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		m_facing = Direction::Right;
+	}
 }
 
 /// <summary>
@@ -168,6 +222,32 @@ void Game::changeCharacterName()
 void Game::processKeyReleases(sf::Event t_event)
 {
 	m_canChange = true;
+}
+
+bool Game::checkBounds()
+{
+	bool canMove{ true };
+	if (m_position.y < 0.0f)
+	{
+		canMove = false;
+		m_position.y = 0.0f;
+	}
+	if (m_position.y > 452.0f)
+	{
+		canMove = false;
+		m_position.y = 452.0f;
+	}
+	if (m_position.x < 0.0f)
+	{
+		canMove = false;
+		m_position.x = 0.0f;
+	}
+	if (m_position.x > 736.0f)
+	{
+		canMove = false;
+		m_position.x = 736.0f;
+	}
+	return canMove;
 }
 
 /// <summary>

@@ -11,6 +11,15 @@
 /// </summary>
 #include <SFML/Graphics.hpp>
 
+enum class Direction
+{
+	None,
+	Up,
+	Down,
+	Left,
+	Right
+};
+
 class Game
 {
 public:
@@ -27,12 +36,15 @@ private:
 	void processKeys(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void render();
-	
+	void move();
+	void getDirection();
+
 	void setupFontAndText();
 	void setupSprite();
 	void centreText(sf::Text &t_text, float t_yCoord);
 	void changeCharacterName();
 	void processKeyReleases(sf::Event t_event);
+	bool checkBounds();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_SuperMario256; // font used by message
@@ -44,6 +56,9 @@ private:
 	bool m_exitGame; // control exiting game
 	bool m_imAMario{ true }; // Change from mario to luigi
 	bool m_canChange{ true }; // Can change name
+	Direction m_facing{ Direction::Right }; // Starting direction
+	sf::Vector2f m_position{ 200.0f,200.0f }; // Default character location
+	float m_speed{ 5.0f };
 
 };
 
