@@ -30,7 +30,7 @@ private:
 	
 	void setupFontAndText();
 	void setupSprite();
-	void centreText();
+	void centreText(sf::Text &t_text, float t_yCoord);
 	void changeCharacterName();
 	void processKeyReleases(sf::Event t_event);
 

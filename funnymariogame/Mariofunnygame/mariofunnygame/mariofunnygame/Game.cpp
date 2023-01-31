@@ -137,7 +137,7 @@ void Game::setupFontAndText()
 	m_CharacterName.setFont(m_SuperMario256);
 	m_CharacterName.setString("Mario");
 	m_CharacterName.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_CharacterName.setPosition(120.0f, 40.0f);
+	m_CharacterName.setPosition(400.0f, 50.0f);
 	m_CharacterName.setCharacterSize(80U);
 	m_CharacterName.setOutlineColor(sf::Color::Black);
 	m_CharacterName.setFillColor(sf::Color::Red);
@@ -160,6 +160,7 @@ void Game::changeCharacterName()
 		m_imAMario = !m_imAMario;
 		m_canChange = false;
 	}
+	centreText(m_CharacterName, 50.0f);
 	
 
 	
@@ -193,9 +194,10 @@ void Game::setupSprite()
 	m_marioSprite.setPosition(300.0f, 180.0f);
 }
 
-void Game::centreText()
+void Game::centreText(sf::Text& t_text, float t_yCoord)
 {
 	sf::Vector2f location{ 0.0f,0.0f };
-	location.y = 50.0f;
-	location.x = 400.0f - m_CharacterName.getGlobalBounds().width / 2.0f;
+	location.y = t_yCoord;
+	location.x = 400.0f - t_text.getGlobalBounds().width / 2.0f;
+	t_text.setPosition(location);
 }
