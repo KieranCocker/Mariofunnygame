@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\C00259317\Downloads\funnymariogame\Mariofunnygame\mariofunnygame\Debug\mariofunnygame.exe</FullPath>
+      <FullPath>C:\Users\C00259317\Desktop\Mariofunnygame\funnymariogame\Mariofunnygame\mariofunnygame\Debug\mariofunnygame.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\C00259317\Downloads\funnymariogame\Mariofunnygame\mariofunnygame\mariofunnygame\ASSETS\FONTS\ariblk.ttf</FullPath>
+      <FullPath>C:\Users\C00259317\Desktop\Mariofunnygame\funnymariogame\Mariofunnygame\mariofunnygame\mariofunnygame\ASSETS\FONTS\ariblk.ttf</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\C00259317\Downloads\funnymariogame\Mariofunnygame\mariofunnygame\mariofunnygame\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
+      <FullPath>C:\Users\C00259317\Desktop\Mariofunnygame\funnymariogame\Mariofunnygame\mariofunnygame\mariofunnygame\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

@@ -91,6 +91,10 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+	if (sf::Keyboard::Space == t_event.key.code)
+	{
+		changeCharacterName();
+	}
 }
 
 /// <summary>
@@ -111,7 +115,7 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	m_window.draw(m_welcomeMessage);
+	m_window.draw(m_CharacterName);
 	m_window.draw(m_logoSprite);
 	m_window.draw(m_marioSprite);
 	m_window.display();
@@ -126,17 +130,31 @@ void Game::setupFontAndText()
 	{
 		std::cout << "problem loading Super Mario font" << std::endl;
 	}
-	m_welcomeMessage.setFont(m_SuperMario256);
-	m_welcomeMessage.setString("SFML Game");
-	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(120.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(80U);
-	m_welcomeMessage.setOutlineColor(sf::Color::Black);
-	m_welcomeMessage.setFillColor(sf::Color::Red);
-	m_welcomeMessage.setOutlineThickness(3.0f);
+	m_CharacterName.setFont(m_SuperMario256);
+	m_CharacterName.setString("Mario");
+	m_CharacterName.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
+	m_CharacterName.setPosition(120.0f, 40.0f);
+	m_CharacterName.setCharacterSize(80U);
+	m_CharacterName.setOutlineColor(sf::Color::Black);
+	m_CharacterName.setFillColor(sf::Color::Red);
+	m_CharacterName.setOutlineThickness(3.0f);
 
 }
 
+void Game::changeCharacterName()
+{
+	if (m_imAMario)
+	{
+		m_CharacterName.setString("Luigi");
+	}
+	else
+	{
+		m_CharacterName.setString("Mario");
+	}
+	m_imAMario = !m_imAMario;
+
+	
+}
 /// <summary>
 /// load the texture and setup the sprite for the logo
 /// </summary>
@@ -157,5 +175,13 @@ void Game::setupSprite()
 	}
 
 	m_marioSprite.setTexture(m_marioTexture);
-	m_marioSprite.setPosition(100.0f, 100.0f);
+	m_marioSprite.setTextureRect(sf::IntRect(0, 0, 64, 148));
+	m_marioSprite.setPosition(300.0f, 180.0f);
+}
+
+void Game::centreText()
+{
+	sf::Vector2f location{ 0.0f,0.0f };
+	location.y = 50.0f;
+	location.x = 400.0f - m_CharacterName.getGlobalBounds().width / 2.0f;
 }

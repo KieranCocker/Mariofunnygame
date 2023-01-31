@@ -1,5 +1,5 @@
 /// <summary>
-/// author Pete Lowe May 2019
+/// author Kieran Cocker
 /// you need to change the above line or lose marks
 /// </summary>
 #ifndef GAME_HPP
@@ -30,15 +30,18 @@ private:
 	
 	void setupFontAndText();
 	void setupSprite();
+	void centreText();
+	void changeCharacterName();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_SuperMario256; // font used by message
-	sf::Text m_welcomeMessage; // text used for message on screen
+	sf::Text m_CharacterName; // Name of character displayed on screen
 	sf::Texture m_logoTexture; // texture used for sfml logo
 	sf::Sprite m_logoSprite; // sprite used for sfml logo
 	sf::Texture m_marioTexture; // texture used for mario and luigi
 	sf::Sprite m_marioSprite; // sprite used for mario and luigi
 	bool m_exitGame; // control exiting game
+	bool m_imAMario{ true }; // Change from mario to luigi
 
 };
 
