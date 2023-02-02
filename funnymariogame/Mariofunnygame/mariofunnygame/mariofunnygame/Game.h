@@ -10,6 +10,7 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 enum class Direction
 {
@@ -53,6 +54,8 @@ private:
 	sf::Sprite m_logoSprite; // sprite used for sfml logo
 	sf::Texture m_marioTexture; // texture used for mario and luigi
 	sf::Sprite m_marioSprite; // sprite used for mario and luigi
+	sf::SoundBuffer m_buffer; // Audio used for Mario
+	sf::Sound m_sound;
 	bool m_exitGame; // control exiting game
 	bool m_imAMario{ true }; // Change from mario to luigi
 	bool m_canChange{ true }; // Can change name

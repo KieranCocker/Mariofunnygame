@@ -255,19 +255,17 @@ bool Game::checkBounds()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
-	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
+	m_buffer.loadFromFile("ASSETS\\AUDIO\\mario.wav");
+	m_sound.setBuffer(m_buffer);
+	m_sound.play();
+
 
 	if (!m_marioTexture.loadFromFile("ASSETS\\IMAGES\\mario-luigi-64.png"))
 	{
 		// Error message if call fails
 		std::cout << "problem loading sprite mario" << std::endl;
 	}
+
 
 	m_marioSprite.setTexture(m_marioTexture);
 	m_marioSprite.setTextureRect(sf::IntRect(0, 0, 64, 148));
